@@ -566,7 +566,7 @@ var recoList;
 
 				console.log(body);
 				console.log(params);
-		        apigClient.uploadresumeFolderObjectPut(params, body , additionalParams).then(function(res){
+		        apigClient.postresumeFolderFilePut(params, body , additionalParams).then(function(res){
 		        	if (res.status == 200) {
 						console.log("upload success");
 		            	createProfileView()
@@ -1131,7 +1131,7 @@ var recoList;
 			   }
 			   else
 			   {
-				   apigClient.putdetailsPut(params, reqBody, additionalParams).then(function(result)
+				   apigClient.createuserPost(params, reqBody, additionalParams).then(function(result)
 				   {
 					   console.log(result);
 					   showProfileResult('Succesfully registered');
