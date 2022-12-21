@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://wm3gw0cdg4.execute-api.us-east-1.amazonaws.com/prod';
+    var invokeUrl = 'https://ks66lg3me4.execute-api.us-east-1.amazonaws.com/dev';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -83,129 +83,129 @@ apigClientFactory.newClient = function (config) {
     
     
     
-    apigClient.getcollaborativerecosGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['userid'], ['body']);
-        
-        var getcollaborativerecosGetRequest = {
-            verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/getcollaborativerecos').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['userid']),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(getcollaborativerecosGetRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.getcollaborativerecosOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var getcollaborativerecosOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/getcollaborativerecos').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(getcollaborativerecosOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.getcontentbasedrecosGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['userid'], ['body']);
-        
-        var getcontentbasedrecosGetRequest = {
-            verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/getcontentbasedrecos').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['userid']),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(getcontentbasedrecosGetRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.getcontentbasedrecosOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var getcontentbasedrecosOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/getcontentbasedrecos').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(getcontentbasedrecosOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.getjobbatchPost = function (params, body, additionalParams) {
+    apigClient.createuserPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, ['body'], ['body']);
         
-        var getjobbatchPostRequest = {
+        var createuserPostRequest = {
             verb: 'post'.toUpperCase(),
-            path: pathComponent + uritemplate('/getjobbatch').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/createuser').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(getjobbatchPostRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(createuserPostRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.getjobbatchOptions = function (params, body, additionalParams) {
+    apigClient.createuserOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var getjobbatchOptionsRequest = {
+        var createuserOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/getjobbatch').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/createuser').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(getjobbatchOptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(createuserOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.likejobPut = function (params, body, additionalParams) {
+    apigClient.getcollaborativerecsPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['userid', 'jobid'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var likejobPutRequest = {
-            verb: 'put'.toUpperCase(),
-            path: pathComponent + uritemplate('/likejob').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+        var getcollaborativerecsPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/getcollaborativerecs').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['userid', 'jobid']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(likejobPutRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(getcollaborativerecsPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.getcollaborativerecsOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var getcollaborativerecsOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/getcollaborativerecs').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(getcollaborativerecsOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.getcontentbasedrecsPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var getcontentbasedrecsPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/getcontentbasedrecs').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(getcontentbasedrecsPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.getcontentbasedrecsOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var getcontentbasedrecsOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/getcontentbasedrecs').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(getcontentbasedrecsOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.likejobPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var likejobPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/likejob').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(likejobPostRequest, authType, additionalParams, config.apiKey);
     };
     
     
@@ -227,165 +227,57 @@ apigClientFactory.newClient = function (config) {
     };
     
     
-    apigClient.putdetailsPut = function (params, body, additionalParams) {
+    apigClient.postresumeFolderFilePut = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['file', 'folder'], ['body']);
         
-        var putdetailsPutRequest = {
+        var postresumeFolderFilePutRequest = {
             verb: 'put'.toUpperCase(),
-            path: pathComponent + uritemplate('/putdetails').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/postresume/{folder}/{file}').expand(apiGateway.core.utils.parseParametersToObject(params, ['file', 'folder'])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(putdetailsPutRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(postresumeFolderFilePutRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.putdetailsOptions = function (params, body, additionalParams) {
+    apigClient.postresumeFolderFileOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['file', 'folder'], ['body']);
         
-        var putdetailsOptionsRequest = {
+        var postresumeFolderFileOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/putdetails').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/postresume/{folder}/{file}').expand(apiGateway.core.utils.parseParametersToObject(params, ['file', 'folder'])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(putdetailsOptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(postresumeFolderFileOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.putuserdetailsPut = function (params, body, additionalParams) {
+    apigClient.unlikejobPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var putuserdetailsPutRequest = {
-            verb: 'put'.toUpperCase(),
-            path: pathComponent + uritemplate('/putuserdetails').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(putuserdetailsPutRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.putuserdetailsOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var putuserdetailsOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/putuserdetails').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(putuserdetailsOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.searchjobbytagGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['tag'], ['body']);
-        
-        var searchjobbytagGetRequest = {
-            verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/searchjobbytag').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['tag']),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(searchjobbytagGetRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.searchjobbytagOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var searchjobbytagOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/searchjobbytag').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(searchjobbytagOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.sendemailPut = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['user_id', 'email_id', 'job_id'], ['body']);
-        
-        var sendemailPutRequest = {
-            verb: 'put'.toUpperCase(),
-            path: pathComponent + uritemplate('/sendemail').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['user_id', 'email_id', 'job_id']),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(sendemailPutRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.sendemailOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var sendemailOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/sendemail').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(sendemailOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.unlikejobPut = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['userid', 'jobid'], ['body']);
-        
-        var unlikejobPutRequest = {
-            verb: 'put'.toUpperCase(),
+        var unlikejobPostRequest = {
+            verb: 'post'.toUpperCase(),
             path: pathComponent + uritemplate('/unlikejob').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['userid', 'jobid']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(unlikejobPutRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(unlikejobPostRequest, authType, additionalParams, config.apiKey);
     };
     
     
@@ -407,57 +299,21 @@ apigClientFactory.newClient = function (config) {
     };
     
     
-    apigClient.uploadresumeFolderObjectPut = function (params, body, additionalParams) {
+    apigClient.viewjobPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['object', 'folder', 'Content-Type', 'x-amz-meta-customLabels'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var uploadresumeFolderObjectPutRequest = {
-            verb: 'put'.toUpperCase(),
-            path: pathComponent + uritemplate('/uploadresume/{folder}/{object}').expand(apiGateway.core.utils.parseParametersToObject(params, ['object', 'folder', ])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'x-amz-meta-customLabels']),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(uploadresumeFolderObjectPutRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.uploadresumeFolderObjectOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['Content-Type', 'x-amz-meta-customLabels'], ['body']);
-        
-        var uploadresumeFolderObjectOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/uploadresume/{folder}/{object}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'x-amz-meta-customLabels']),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(uploadresumeFolderObjectOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.viewjobGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['id'], ['body']);
-        
-        var viewjobGetRequest = {
-            verb: 'get'.toUpperCase(),
+        var viewjobPostRequest = {
+            verb: 'post'.toUpperCase(),
             path: pathComponent + uritemplate('/viewjob').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['id']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(viewjobGetRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(viewjobPostRequest, authType, additionalParams, config.apiKey);
     };
     
     
@@ -476,42 +332,6 @@ apigClientFactory.newClient = function (config) {
         
         
         return apiGatewayClient.makeRequest(viewjobOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.viewuserdetailsGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['userid'], ['body']);
-        
-        var viewuserdetailsGetRequest = {
-            verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/viewuserdetails').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['userid']),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(viewuserdetailsGetRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.viewuserdetailsOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var viewuserdetailsOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/viewuserdetails').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(viewuserdetailsOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
 
