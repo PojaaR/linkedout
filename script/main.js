@@ -1058,7 +1058,11 @@ var recoList;
      			showRegisterResult('Please fill in all fields');
      			return
      		}
-
+			
+			if(document.getElementById('resume-file-input').files[0] == null){
+				showRegisterResult('Please fill in all fields');
+				return
+			}
 
 
 			let dataEmail = {
@@ -1077,6 +1081,7 @@ var recoList;
 			    else {
 			    	cognitoUser = result.user;
 					console.log(cognitoUser);
+					uploadResumeToS3()
 					showProfileForm()
 			    	//showRegisterResult('Succesfully registered');
 			    }
