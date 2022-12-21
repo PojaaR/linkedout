@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="LinkedOut Recommendation portal">
+  <title>LinkedOut</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+  <link href="styles/tagsinput.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/main.css">
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <script src="scripts/tagsinput.js"></script>
+
+
+</head>
+<body>
+  <header class="top-header">
+    <nav class="top-nav">
+      <a href="#">LinkedOut</a>
+    </nav>
+    <span id="welcome-msg"></span>
+    <a id="logout-link" href="#">Logout</a>
+    <i id="avatar" class="avatar fa fa-user fa-2x"></i>
+  </header>
+
+  <div class="container">
+    <header>
+      <p>
+        <span>LinkedOut</span>
+         Job recommendations
+      </p>
+    </header>
+
+    <section class="main-section">
+      <div id="login-form">
+        <label for="username">Username:</label>
+        <input id="username" name="username" type="text">
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password">
+        <button id="register-form-btn">New User? Register</button>
+        <button id="login-btn">Login</button>
+        <p id="login-error"></p>
+      </div>
+
+      <div id="register-form">
+        <label for="emailid">Email ID: *</label>
+        <input id="register-username" name="username" type="text">
+        <label for="password">Password: *</label>
+        <input id="register-password" name="password" type="password">
+        <button id="register-btn">Next -></button>
+        <p id="register-result"></p>
+      </div>
+
+      <div id="profile-form">
+        <label for="verif-code">Enter the verification code received on your email: *</label>
+        <input id="profile-verif-code" name="verif-code" type="text">
+        <label for="firstname">First Name: *</label>
+        <input id="profile-firstname" name="firstname" type="text">
+        <label for="lastname">Last Name: *</label>
+        <input id="profile-lastname" name="lastname" type="text">
+        <label for="major">Major: *</label>
+        <input id="profile-major" name="major" type="text">
+        <label for="highest-deg">Degree Level: *</label>
+        <input id="profile-highest-deg" name="highest-deg" type="text">
+        <label for="grad-year">Year of Graduation: *</label>
+        <input id="profile-grad-year" name="grad-year" type="text">
+        <label for="skills-list">Skills: *</label>
+        <input id="profile-skills-list" name="skills-list" type="text">
+        <label for="int-roles">Roles of Interest: *</label>
+        <input id="profile-int-roles" name="int-roles" type="text">
+        <button id="login-form-btn">Back to Login</button>
+        <button id="update-profile-btn">Finish registering</button>
+        <p id="profile-result"></p>
+      </div>
+
+      <aside id="item-nav">
+        <div class="nav-icon">
+          <i class="fa fa-sitemap fa-2x"></i>
+        </div>
+        <nav class="main-nav">
+          <a href="#" id="nearby-btn" class="main-nav-btn active">
+            <i class="fa fa-briefcase"></i> List of Jobs
+          </a>
+          <a href="#" id="fav-btn" class="main-nav-btn">
+            <i class="fa fa-user"></i> My Profile
+          </a>
+          <a href="#" id="recommend-btn" class="main-nav-btn">
+            <i class="fa fa-heart"></i> Liked Jobs
+          </a>
+          <a href="#" id="recommend-btn-2" class="main-nav-btn">
+            <i class="fa fa-thumbs-up"></i> Job Recommendations
+          </a>
+        </nav>
+      </aside>
+
+      <div id="inner-item-container">
+          <div id="inner-item-container-row" class="row">
+              <div id="jobWallLeft" class="col-md-6">
+
+              </div>
+              <div id="jobWallRight" class="col-md-6">
+
+              </div>
+          </div>
+
+
+          <div id="inner-job-list-row" class="row">
+              <div id="jobList" class="col-md-12">
+
+              </div>
+          </div>
+
+          <div id="inner-job-liked-list-row" class="row">
+            <div id="likedList" class="col-md-12">
+
+            </div>
+        </div>
+
+        <div id="inner-job-recos-list-row" class="row">
+          <div id="recoList" class="col-md-12">
+
+          </div>
+       </div>
+
+          <div id="inner-job-information-row" class="row">
+            <div id="jobInformation" class="col-md-12">
+            </div>
+            <div>
+              <div>
+                <form style="margin-left:15px">
+                  <h4 class="form-signin-heading">Want to share this job posting with a friend?</h2>
+                  <label for="fname">Enter Email-ID</label><br>
+                  <input type="text" id="email" name="email"><br>
+                  <input type="submit" id="email-button" value="Submit">
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+    </section>
+  </div>
+
+  <footer>
+    <p class="title">What We Do</p>
+    <p>"Help you find your next perfect job"</p>
+
+  </footer>
+
+  <script src="https://rawgit.com/emn178/js-md5/master/build/md5.min.js"></script>
+  <script type="text/javascript" src="scripts/amazon-cognito-identity.min.js"></script>
+  <script src="scripts/utils.js"></script>
+  <script type="text/javascript" src="sdk/lib/axios/dist/axios.standalone.js"></script>
+  <script type="text/javascript" src="sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+  <script type="text/javascript" src="sdk/lib/CryptoJS/rollups/sha256.js"></script>
+  <script type="text/javascript" src="sdk/lib/CryptoJS/components/hmac.js"></script>
+  <script type="text/javascript" src="sdk/lib/CryptoJS/components/enc-base64.js"></script>
+  <script type="text/javascript" src="sdk/lib/url-template/url-template.js"></script>
+  <script type="text/javascript" src="sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+  <script type="text/javascript" src="sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+  <script type="text/javascript" src="sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+  <script type="text/javascript" src="sdk/lib/apiGatewayCore/utils.js"></script>
+  <script type="text/javascript" src="sdk/apigClient.js"></script>
+
+  <script src="scripts/main.js"></script>
+
+  <!-- <script>console.log($("#skills-select").tagsinput('items')['itemsArray'])</script> -->
+
+</body>
+</html>
