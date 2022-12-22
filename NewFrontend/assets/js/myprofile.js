@@ -28,9 +28,12 @@ function getBase64(file) {
 
 function createProfileView()
 {
-    let body = { }
-    let params = {"userid": window.localStorage.getItem('user_id')}
-    let additionalParams = { }
+    let body = {"user_id": window.localStorage.getItem('user_id')}
+    let params = {}
+    console.log(body)
+    let additionalParams = {  headers: {
+        'Content-Type':"application/json"
+    }}
     let profile = {
         "first_name": "Atul",
         "last_name": "Manjunath Bharadwaj",
@@ -41,26 +44,30 @@ function createProfileView()
         "skills": ["Python", "Data Science"]
     }
 
-    // apigClient.viewuserdetailsGet(params, body, additionalParams).then(function(result)
-    // {
-    //     console.log("API to get user profile")
+    apigClient.viewuserdetailsPost(params, body, additionalParams).then(function(result)
+    {
+        console.log("API to get user profile")
+        console.log(result)
         
-    //     renderProfile(result['data'])
+        renderProfile(result['data'])
 
-    // }).catch(function(res) {
-    //     console.log(res);
-    // })
+    }).catch(function(res) {
+        console.log(res);
+    })
 
-    renderProfile(profile);
+    // renderProfile(profile);
 }
 
 function editProfile()
 	{
-		let body = { }
-		let params = {"userid": window.localStorage.getItem('user_id')}
-		let additionalParams = { }
+        console.log("Editing!!!!")
+		let body = {"user_id": window.localStorage.getItem('user_id')}
+		let params = {}
+		let additionalParams = {headers: {
+            'Content-Type':"application/json"
+        } }
 
-		apigClient.viewuserdetailsGet(params, body, additionalParams).then(function(result)
+		apigClient.viewuserdetailsPost(params, body, additionalParams).then(function(result)
 		{
 			console.log("API to get user profile")
 			let profile = result['data']
@@ -68,8 +75,8 @@ function editProfile()
 			let int_roles = $("#roles-select").val()
 			let skills = $("#skills-select").val()
 
-			profile['interested_roles'] = int_roles
-			profile['skills'] = skills
+			profile['interested_roles'] = int_roles.split(",")
+			profile['skills_input'] = skills.split(",")
 
 			let params2 = { }
 
@@ -112,21 +119,23 @@ function uploadResumeToS3()
 			data => {
 
 		        let body = data;
-		        let params = {"object" : newFile.name, 'Content-Type': newFile.type, 'x-amz-meta-customLabels': labels, 'folder': 'linkedout-resumestore2'};
+		        let params = {"file" : newFile.name, 'Content-Type': newFile.type, 'x-amz-meta-customLabels': labels, 'folder': 'linkedout-resumestore2'};
 		        let additionalParams = {};
 
 				console.log(body);
 				console.log(params);
+
+                console.log("Base64 Success")
 		        apigClient.postresumeFolderFilePut(params, body , additionalParams).then(function(res){
 		        	if (res.status == 200) {
 						console.log("upload success");
 		            	createProfileView()
 		        	}
 		      	}).catch(function(res) {
+                    console.log("Upload Failed")
 					console.log(res);
 				})
-	    	}
-		)
+	    	})
 
 	}
 
@@ -134,6 +143,9 @@ function renderProfile(profile)
 {
     $("#jobWallLeft").empty()
     $("#jobWallRight").empty()
+
+    console.log(profile)
+
     // $("#jobList").empty()
     // $("#likedList").empty()
     // $("#recoList").empty()
@@ -183,13 +195,13 @@ function renderProfile(profile)
     // about_div.append($("<br>"))
     about_div.append($("<span style='font-weight: bold'>Degree Level</span>"))
     let deg_span = $("<span>")
-    deg_span.text(" | " + profile['highest_degree'])
+    deg_span.text(" | " + profile['highest_deg'])
     about_div.append(deg_span)
     about_div.append($("<br>"))
     about_div.append($("<br>"))
     about_div.append($("<span style='font-weight: bold'>Graduation year</span>"))
     let yr_span = $("<span>")
-    yr_span.text(" | " + profile['graduation_year'])
+    yr_span.text(" | " + profile['year_of_grad'])
     about_div.append(yr_span)
     about_div.append($("<br>"))
     about_div.append($("<br>"))
@@ -232,7 +244,7 @@ function renderProfile(profile)
     skills_div.attr("id", "profile-skills-box")
     skills_div.append("<center><h6>SKILLS</h6></center>")
     //let skills_select = $("<select multiple data-role='tagsinput' id='skills-select'></select>")
-    let skills_str = profile['skills'].join()
+    let skills_str = profile['skills_input'].join()
     let skills_select = $("<input style='width:100%;' type='text' value='" + skills_str + "' id='skills-select' />")
     // $('#skills-select').tagsinput()
     // $.each(profile['skills'], function(index, val) {

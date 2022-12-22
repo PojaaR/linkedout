@@ -230,12 +230,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.postresumeFolderFilePut = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['file', 'folder', 'Content-Type', 'x-amz-meta-customLabels'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['file', 'folder'], ['body']);
         
         var postresumeFolderFilePutRequest = {
             verb: 'put'.toUpperCase(),
-            path: pathComponent + uritemplate('/postresume/{folder}/{file}').expand(apiGateway.core.utils.parseParametersToObject(params, ['file', 'folder', ])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'x-amz-meta-customLabels']),
+            path: pathComponent + uritemplate('/postresume/{folder}/{file}').expand(apiGateway.core.utils.parseParametersToObject(params, ['file', 'folder'])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
@@ -386,24 +386,6 @@ apigClientFactory.newClient = function (config) {
         
         
         return apiGatewayClient.makeRequest(viewuserdetailsGetRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.viewuserdetailsPost = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var viewuserdetailsPostRequest = {
-            verb: 'post'.toUpperCase(),
-            path: pathComponent + uritemplate('/viewuserdetails').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(viewuserdetailsPostRequest, authType, additionalParams, config.apiKey);
     };
     
     

@@ -230,12 +230,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.postresumeFolderFilePut = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['file', 'folder', 'Content-Type', 'x-amz-meta-customLabels'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['file', 'folder', 'Content-Type', 'x-amz-meta-customLabels', 'object', 'bucket'], ['body']);
         
         var postresumeFolderFilePutRequest = {
             verb: 'put'.toUpperCase(),
             path: pathComponent + uritemplate('/postresume/{folder}/{file}').expand(apiGateway.core.utils.parseParametersToObject(params, ['file', 'folder', ])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'x-amz-meta-customLabels']),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['Content-Type', 'x-amz-meta-customLabels', 'object', 'bucket']),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
