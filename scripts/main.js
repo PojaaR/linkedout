@@ -1059,7 +1059,7 @@ var recoList;
      			return
      		}
 			
-			if(document.getElementById('resume-file-input').files[0] == null){
+			if(document.getElementById('resume-file-input').value == ""){
 				showRegisterResult('Please fill in all fields');
 				return
 			}
