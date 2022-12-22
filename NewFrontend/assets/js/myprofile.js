@@ -1,44 +1,151 @@
 var apigClient;
 var username;
+window.localStorage.setItem('user_id','am11449');
 
 document.querySelector('#fav-btn').addEventListener('click', createProfileView);
-itemNav = document.querySelector('#item-nav');
+
+welcomeMsg = document.querySelector('#welcome-msg');
+itemNav = document.querySelector('#item-nav');  
 avatar = document.querySelector('#avatar');
+logoutBtn = document.querySelector('#logout-link');
 
 apigClient = apigClientFactory.newClient({});
+
+function getBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        let encoded = reader.result.toString().replace(/^data:(.*,)?/, '');
+        if ((encoded.length % 4) > 0) {
+          encoded += '='.repeat(4 - (encoded.length % 4));
+        }
+        resolve(encoded);
+      };
+      reader.onerror = error => reject(error);
+    });
+}
 
 function createProfileView()
 {
     let body = { }
     let params = {"userid": window.localStorage.getItem('user_id')}
     let additionalParams = { }
+    let profile = {
+        "first_name": "Atul",
+        "last_name": "Manjunath Bharadwaj",
+        "degree": "Masters",
+        "highest_degree": "Bachelors",
+        "graduation_year": "2023",
+        "interested_roles": ["SDE", "BA"],
+        "skills": ["Python", "Data Science"]
+    }
 
-    apigClient.viewuserdetailsGet(params, body, additionalParams).then(function(result)
-    {
-        console.log("API to get user profile")
-        renderProfile(result['data'])
+    // apigClient.viewuserdetailsGet(params, body, additionalParams).then(function(result)
+    // {
+    //     console.log("API to get user profile")
+        
+    //     renderProfile(result['data'])
 
-    }).catch(function(res) {
-        console.log(res);
-    })
+    // }).catch(function(res) {
+    //     console.log(res);
+    // })
+
+    renderProfile(profile);
 }
+
+function editProfile()
+	{
+		let body = { }
+		let params = {"userid": window.localStorage.getItem('user_id')}
+		let additionalParams = { }
+
+		apigClient.viewuserdetailsGet(params, body, additionalParams).then(function(result)
+		{
+			console.log("API to get user profile")
+			let profile = result['data']
+
+			let int_roles = $("#roles-select").val()
+			let skills = $("#skills-select").val()
+
+			profile['interested_roles'] = int_roles
+			profile['skills'] = skills
+
+			let params2 = { }
+
+			let additionalParams2 = {
+			   headers: {
+				   'Content-Type':"application/json"
+			   }
+			}
+
+			apigClient.putdetailsPut(params2, profile, additionalParams2).then(function(result2)
+			{
+				console.log(result2);
+				createProfileView()
+			}).catch(function(res2) {
+				console.log(res2);
+			})
+
+
+		}).catch(function(res) {
+			console.log(res);
+		})
+	}
+
+function uploadResumeToS3()
+	{
+		let file = document.getElementById('resume-file-input').files[0];
+		if (file == undefined)
+		{
+	        return;
+	    }
+
+		let blob = file.slice(0, file.size, file.type);
+
+		let newFile = new File([blob], window.localStorage.getItem('user_id')+'.jpeg', {type: 'image/jpeg'});
+
+		let labels = [window.localStorage.getItem('user_id')]
+
+
+		let fl = getBase64(newFile).then(
+			data => {
+
+		        let body = data;
+		        let params = {"object" : newFile.name, 'Content-Type': newFile.type, 'x-amz-meta-customLabels': labels, 'folder': 'linkedout-resumestore2'};
+		        let additionalParams = {};
+
+				console.log(body);
+				console.log(params);
+		        apigClient.postresumeFolderFilePut(params, body , additionalParams).then(function(res){
+		        	if (res.status == 200) {
+						console.log("upload success");
+		            	createProfileView()
+		        	}
+		      	}).catch(function(res) {
+					console.log(res);
+				})
+	    	}
+		)
+
+	}
 
 function renderProfile(profile)
 {
-    // $("#jobWallLeft").empty()
-    // $("#jobWallRight").empty()
+    $("#jobWallLeft").empty()
+    $("#jobWallRight").empty()
     // $("#jobList").empty()
     // $("#likedList").empty()
     // $("#recoList").empty()
     // $("#jobInformation").empty()
 
-    // showElement(itemNav);
+    showElement(itemNav);
     // showElement(jobTags, "flex");
     // hideElement(jobList);
     // hideElement(jobInformation);
-    // showElement(avatar);
-    // showElement(welcomeMsg);
-    // showElement(logoutBtn, 'inline-block');
+    showElement(avatar);
+    showElement(welcomeMsg);
+    showElement(logoutBtn, 'inline-block');
     // hideElement(loginForm);
     // hideElement(registerForm);
     // hideElement(profileForm);
@@ -46,6 +153,7 @@ function renderProfile(profile)
     // hideElement(recoList);
 
     console.log(profile);
+    console.log("Inside Render");
 
     let name_dp_div = $("<div>")
     name_dp_div.attr("id", "profile-name-dp")
@@ -67,12 +175,12 @@ function renderProfile(profile)
 
     let about_div = $("<div>")
     about_div.attr("id", "profile-about-info")
-    about_div.append($("<span style='font-weight: bold'>Email</span>"))
-    let email_span = $("<span>")
-    email_span.text(" | " + profile['email_id'])
-    about_div.append(email_span)
-    about_div.append($("<br>"))
-    about_div.append($("<br>"))
+    // about_div.append($("<span style='font-weight: bold'>Email</span>"))
+    // let email_span = $("<span>")
+    // email_span.text(" | " + profile['email_id'])
+    // about_div.append(email_span)
+    // about_div.append($("<br>"))
+    // about_div.append($("<br>"))
     about_div.append($("<span style='font-weight: bold'>Degree Level</span>"))
     let deg_span = $("<span>")
     deg_span.text(" | " + profile['highest_degree'])
@@ -107,7 +215,7 @@ function renderProfile(profile)
     let resume_disp_box = $("<div>")
     resume_disp_box.attr("id", "resume-display-box")
     let resume_preview = $("<img>")
-    resume_preview.attr("src", "https://ccbd-resumes.s3.us-east-1.amazonaws.com/" + window.localStorage.getItem('user_id') + ".jpeg")
+    resume_preview.attr("src", "https://linkedout-resumestore2.s3.amazonaws.com/" + window.localStorage.getItem('user_id') + ".jpeg")
     resume_preview.attr("alt", "No resume found")
     resume_disp_box.append(resume_preview)
 
