@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>LinkedOut</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    </head>
+    <body>
+        <header class="top-header">
+          <nav class="top-nav">
+            <a href="#">LinkedOut</a>
+          </nav>
+          <span id="welcome-msg"></span>
+          <a id="logout-link" href="#">Logout</a>
+          <i id="avatar" class="avatar fa fa-user fa-2x"></i>
+        </header>
+      
+        <div class="container">
+            <header>
+                <p>
+                <span>LinkedOut</span>
+                    Job recommendations
+                </p>
+            </header>
+            <section class="main-section">
+                <aside id="item-nav">
+                    <div class="nav-icon">
+                    <i class="fa fa-sitemap fa-2x"></i>
+                    </div>
+                    <nav class="main-nav">
+                    <!-- <a href="#" id="nearby-btn" class="main-nav-btn active">
+                        <i class="fa fa-briefcase"></i> List of Jobs
+                    </a> -->
+                    <a href="home.html" id="search-btn" class="main-nav-btn">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                    <a href="likedjobs.html" id="recommend-btn" class="main-nav-btn">
+                        <i class="fa fa-heart"></i> Liked Jobs
+                    </a>
+                    <a href="contentrecs.html" id="recommend-btn-2" class="main-nav-btn">
+                        <i class="fa fa-thumbs-up"></i> Job Recommendations based on resume
+                    </a>
+                    <a href=# id="fav-btn" class="main-nav-btn active">
+                        <i class="fa fa-user"></i> My Profile
+                    </a>
+                    </nav>
+                </aside>
+            </section>
+        </div>
+    <footer>
+        <p class="title">What We Do</p>
+        <p>"Help you find your next perfect job"</p>
+    </footer>
+
+    <script type="text/javascript" src="assets/js/sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="assets/js/sdk/apigClient.js"></script>
+    <script type="text/javascript" src="assets/js/index.js"></script>
+    <script type="text/javascript" src="assets/js/aws-sdk.min.js"></script>
+</body>
+</html>
