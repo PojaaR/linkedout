@@ -21,7 +21,7 @@
           <a id="logout-link" href="#">Logout</a>
           <i id="avatar" class="avatar fa fa-user fa-2x"></i>
         </header>
-      
+
         <div class="container">
             <header>
                 <p>
@@ -52,7 +52,22 @@
                     </a>
                     </nav>
                 </aside>
+                <div class="search">
+
+           <form id="form" action="#">
+               <input type="text" id="query"
+                   placeholder=" Search for Jobs"
+                   name="search">
+               <button id="submit-btn">
+                   <i class="fa fa-search"
+                       style="font-size: 18px;">
+                   </i>
+               </button>
+           </form>
+       </div>
+   </div>
             </section>
+
         </div>
     <footer>
         <p class="title">What We Do</p>
@@ -70,7 +85,7 @@
     <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
     <script type="text/javascript" src="assets/js/sdk/lib/apiGatewayCore/utils.js"></script>
     <script type="text/javascript" src="assets/js/sdk/apigClient.js"></script>
-    <script type="text/javascript" src="assets/js/index.js"></script>
+    <script type="text/javascript" src="assets/js/search.js"></script>
     <script type="text/javascript" src="assets/js/aws-sdk.min.js"></script>
 </body>
 </html>
